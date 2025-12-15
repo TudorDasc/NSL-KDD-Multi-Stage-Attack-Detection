@@ -1,0 +1,3670 @@
+{
+  "metadata": {
+    "timestamp": "2025-12-15T14:36:35.220016",
+    "total_samples": 22544,
+    "dataset": "NSL-KDD",
+    "note": "Metrics computed on valid labels only (unknown attacks mapped to -1 are excluded)"
+  },
+  "stats": {
+    "totalConnections": 22544,
+    "attacksDetected": 9763,
+    "attackRate": 43.30642299503194,
+    "multiStageAttacks": 2180,
+    "modelAccuracy": 80.96885813148789
+  },
+  "performance": {
+    "baseline": {
+      "accuracy": 79.67349835861947,
+      "precision": 80.71288378477871,
+      "recall": 79.67349835861947,
+      "f1score": 76.94082912530502
+    },
+    "temporal": {
+      "accuracy": 80.96885813148789,
+      "precision": 82.97907172972245,
+      "recall": 80.96885813148789,
+      "f1score": 78.80020540508916
+    }
+  },
+  "attackDistribution": {
+    "Normal": 12781,
+    "DoS": 6321,
+    "Probe": 2634,
+    "R2L": 794,
+    "U2R": 14
+  },
+  "attackTimeline": [
+    {
+      "window": 0,
+      "attacks": 41
+    },
+    {
+      "window": 100,
+      "attacks": 52
+    },
+    {
+      "window": 200,
+      "attacks": 37
+    },
+    {
+      "window": 300,
+      "attacks": 38
+    },
+    {
+      "window": 400,
+      "attacks": 44
+    },
+    {
+      "window": 500,
+      "attacks": 43
+    },
+    {
+      "window": 600,
+      "attacks": 46
+    },
+    {
+      "window": 700,
+      "attacks": 41
+    },
+    {
+      "window": 800,
+      "attacks": 42
+    },
+    {
+      "window": 900,
+      "attacks": 47
+    },
+    {
+      "window": 1000,
+      "attacks": 41
+    },
+    {
+      "window": 1100,
+      "attacks": 46
+    },
+    {
+      "window": 1200,
+      "attacks": 48
+    },
+    {
+      "window": 1300,
+      "attacks": 43
+    },
+    {
+      "window": 1400,
+      "attacks": 39
+    },
+    {
+      "window": 1500,
+      "attacks": 41
+    },
+    {
+      "window": 1600,
+      "attacks": 34
+    },
+    {
+      "window": 1700,
+      "attacks": 42
+    },
+    {
+      "window": 1800,
+      "attacks": 42
+    },
+    {
+      "window": 1900,
+      "attacks": 56
+    },
+    {
+      "window": 2000,
+      "attacks": 39
+    },
+    {
+      "window": 2100,
+      "attacks": 48
+    },
+    {
+      "window": 2200,
+      "attacks": 53
+    },
+    {
+      "window": 2300,
+      "attacks": 41
+    },
+    {
+      "window": 2400,
+      "attacks": 44
+    },
+    {
+      "window": 2500,
+      "attacks": 42
+    },
+    {
+      "window": 2600,
+      "attacks": 37
+    },
+    {
+      "window": 2700,
+      "attacks": 45
+    },
+    {
+      "window": 2800,
+      "attacks": 45
+    },
+    {
+      "window": 2900,
+      "attacks": 35
+    },
+    {
+      "window": 3000,
+      "attacks": 44
+    },
+    {
+      "window": 3100,
+      "attacks": 40
+    },
+    {
+      "window": 3200,
+      "attacks": 42
+    },
+    {
+      "window": 3300,
+      "attacks": 45
+    },
+    {
+      "window": 3400,
+      "attacks": 48
+    },
+    {
+      "window": 3500,
+      "attacks": 45
+    },
+    {
+      "window": 3600,
+      "attacks": 60
+    },
+    {
+      "window": 3700,
+      "attacks": 42
+    },
+    {
+      "window": 3800,
+      "attacks": 50
+    },
+    {
+      "window": 3900,
+      "attacks": 39
+    },
+    {
+      "window": 4000,
+      "attacks": 44
+    },
+    {
+      "window": 4100,
+      "attacks": 37
+    },
+    {
+      "window": 4200,
+      "attacks": 43
+    },
+    {
+      "window": 4300,
+      "attacks": 40
+    },
+    {
+      "window": 4400,
+      "attacks": 44
+    },
+    {
+      "window": 4500,
+      "attacks": 45
+    },
+    {
+      "window": 4600,
+      "attacks": 44
+    },
+    {
+      "window": 4700,
+      "attacks": 42
+    },
+    {
+      "window": 4800,
+      "attacks": 41
+    },
+    {
+      "window": 4900,
+      "attacks": 41
+    },
+    {
+      "window": 5000,
+      "attacks": 47
+    },
+    {
+      "window": 5100,
+      "attacks": 51
+    },
+    {
+      "window": 5200,
+      "attacks": 46
+    },
+    {
+      "window": 5300,
+      "attacks": 50
+    },
+    {
+      "window": 5400,
+      "attacks": 45
+    },
+    {
+      "window": 5500,
+      "attacks": 44
+    },
+    {
+      "window": 5600,
+      "attacks": 42
+    },
+    {
+      "window": 5700,
+      "attacks": 49
+    },
+    {
+      "window": 5800,
+      "attacks": 35
+    },
+    {
+      "window": 5900,
+      "attacks": 43
+    },
+    {
+      "window": 6000,
+      "attacks": 53
+    },
+    {
+      "window": 6100,
+      "attacks": 51
+    },
+    {
+      "window": 6200,
+      "attacks": 48
+    },
+    {
+      "window": 6300,
+      "attacks": 49
+    },
+    {
+      "window": 6400,
+      "attacks": 43
+    },
+    {
+      "window": 6500,
+      "attacks": 40
+    },
+    {
+      "window": 6600,
+      "attacks": 43
+    },
+    {
+      "window": 6700,
+      "attacks": 46
+    },
+    {
+      "window": 6800,
+      "attacks": 46
+    },
+    {
+      "window": 6900,
+      "attacks": 43
+    },
+    {
+      "window": 7000,
+      "attacks": 43
+    },
+    {
+      "window": 7100,
+      "attacks": 41
+    },
+    {
+      "window": 7200,
+      "attacks": 40
+    },
+    {
+      "window": 7300,
+      "attacks": 46
+    },
+    {
+      "window": 7400,
+      "attacks": 43
+    },
+    {
+      "window": 7500,
+      "attacks": 46
+    },
+    {
+      "window": 7600,
+      "attacks": 47
+    },
+    {
+      "window": 7700,
+      "attacks": 39
+    },
+    {
+      "window": 7800,
+      "attacks": 38
+    },
+    {
+      "window": 7900,
+      "attacks": 46
+    },
+    {
+      "window": 8000,
+      "attacks": 48
+    },
+    {
+      "window": 8100,
+      "attacks": 35
+    },
+    {
+      "window": 8200,
+      "attacks": 46
+    },
+    {
+      "window": 8300,
+      "attacks": 45
+    },
+    {
+      "window": 8400,
+      "attacks": 48
+    },
+    {
+      "window": 8500,
+      "attacks": 43
+    },
+    {
+      "window": 8600,
+      "attacks": 37
+    },
+    {
+      "window": 8700,
+      "attacks": 42
+    },
+    {
+      "window": 8800,
+      "attacks": 55
+    },
+    {
+      "window": 8900,
+      "attacks": 46
+    },
+    {
+      "window": 9000,
+      "attacks": 42
+    },
+    {
+      "window": 9100,
+      "attacks": 41
+    },
+    {
+      "window": 9200,
+      "attacks": 46
+    },
+    {
+      "window": 9300,
+      "attacks": 45
+    },
+    {
+      "window": 9400,
+      "attacks": 40
+    },
+    {
+      "window": 9500,
+      "attacks": 37
+    },
+    {
+      "window": 9600,
+      "attacks": 39
+    },
+    {
+      "window": 9700,
+      "attacks": 50
+    },
+    {
+      "window": 9800,
+      "attacks": 38
+    },
+    {
+      "window": 9900,
+      "attacks": 40
+    },
+    {
+      "window": 10000,
+      "attacks": 39
+    },
+    {
+      "window": 10100,
+      "attacks": 39
+    },
+    {
+      "window": 10200,
+      "attacks": 40
+    },
+    {
+      "window": 10300,
+      "attacks": 31
+    },
+    {
+      "window": 10400,
+      "attacks": 36
+    },
+    {
+      "window": 10500,
+      "attacks": 36
+    },
+    {
+      "window": 10600,
+      "attacks": 43
+    },
+    {
+      "window": 10700,
+      "attacks": 42
+    },
+    {
+      "window": 10800,
+      "attacks": 39
+    },
+    {
+      "window": 10900,
+      "attacks": 43
+    },
+    {
+      "window": 11000,
+      "attacks": 35
+    },
+    {
+      "window": 11100,
+      "attacks": 41
+    },
+    {
+      "window": 11200,
+      "attacks": 46
+    },
+    {
+      "window": 11300,
+      "attacks": 44
+    },
+    {
+      "window": 11400,
+      "attacks": 44
+    },
+    {
+      "window": 11500,
+      "attacks": 42
+    },
+    {
+      "window": 11600,
+      "attacks": 41
+    },
+    {
+      "window": 11700,
+      "attacks": 40
+    },
+    {
+      "window": 11800,
+      "attacks": 36
+    },
+    {
+      "window": 11900,
+      "attacks": 37
+    },
+    {
+      "window": 12000,
+      "attacks": 45
+    },
+    {
+      "window": 12100,
+      "attacks": 39
+    },
+    {
+      "window": 12200,
+      "attacks": 49
+    },
+    {
+      "window": 12300,
+      "attacks": 42
+    },
+    {
+      "window": 12400,
+      "attacks": 44
+    },
+    {
+      "window": 12500,
+      "attacks": 43
+    },
+    {
+      "window": 12600,
+      "attacks": 37
+    },
+    {
+      "window": 12700,
+      "attacks": 47
+    },
+    {
+      "window": 12800,
+      "attacks": 52
+    },
+    {
+      "window": 12900,
+      "attacks": 45
+    },
+    {
+      "window": 13000,
+      "attacks": 50
+    },
+    {
+      "window": 13100,
+      "attacks": 42
+    },
+    {
+      "window": 13200,
+      "attacks": 39
+    },
+    {
+      "window": 13300,
+      "attacks": 43
+    },
+    {
+      "window": 13400,
+      "attacks": 39
+    },
+    {
+      "window": 13500,
+      "attacks": 42
+    },
+    {
+      "window": 13600,
+      "attacks": 45
+    },
+    {
+      "window": 13700,
+      "attacks": 48
+    },
+    {
+      "window": 13800,
+      "attacks": 45
+    },
+    {
+      "window": 13900,
+      "attacks": 45
+    },
+    {
+      "window": 14000,
+      "attacks": 43
+    },
+    {
+      "window": 14100,
+      "attacks": 53
+    },
+    {
+      "window": 14200,
+      "attacks": 48
+    },
+    {
+      "window": 14300,
+      "attacks": 45
+    },
+    {
+      "window": 14400,
+      "attacks": 42
+    },
+    {
+      "window": 14500,
+      "attacks": 44
+    },
+    {
+      "window": 14600,
+      "attacks": 49
+    },
+    {
+      "window": 14700,
+      "attacks": 45
+    },
+    {
+      "window": 14800,
+      "attacks": 43
+    },
+    {
+      "window": 14900,
+      "attacks": 44
+    },
+    {
+      "window": 15000,
+      "attacks": 37
+    },
+    {
+      "window": 15100,
+      "attacks": 38
+    },
+    {
+      "window": 15200,
+      "attacks": 46
+    },
+    {
+      "window": 15300,
+      "attacks": 40
+    },
+    {
+      "window": 15400,
+      "attacks": 50
+    },
+    {
+      "window": 15500,
+      "attacks": 44
+    },
+    {
+      "window": 15600,
+      "attacks": 43
+    },
+    {
+      "window": 15700,
+      "attacks": 52
+    },
+    {
+      "window": 15800,
+      "attacks": 38
+    },
+    {
+      "window": 15900,
+      "attacks": 43
+    },
+    {
+      "window": 16000,
+      "attacks": 48
+    },
+    {
+      "window": 16100,
+      "attacks": 43
+    },
+    {
+      "window": 16200,
+      "attacks": 48
+    },
+    {
+      "window": 16300,
+      "attacks": 53
+    },
+    {
+      "window": 16400,
+      "attacks": 47
+    },
+    {
+      "window": 16500,
+      "attacks": 40
+    },
+    {
+      "window": 16600,
+      "attacks": 43
+    },
+    {
+      "window": 16700,
+      "attacks": 40
+    },
+    {
+      "window": 16800,
+      "attacks": 44
+    },
+    {
+      "window": 16900,
+      "attacks": 46
+    },
+    {
+      "window": 17000,
+      "attacks": 44
+    },
+    {
+      "window": 17100,
+      "attacks": 36
+    },
+    {
+      "window": 17200,
+      "attacks": 35
+    },
+    {
+      "window": 17300,
+      "attacks": 40
+    },
+    {
+      "window": 17400,
+      "attacks": 41
+    },
+    {
+      "window": 17500,
+      "attacks": 35
+    },
+    {
+      "window": 17600,
+      "attacks": 50
+    },
+    {
+      "window": 17700,
+      "attacks": 42
+    },
+    {
+      "window": 17800,
+      "attacks": 39
+    },
+    {
+      "window": 17900,
+      "attacks": 51
+    },
+    {
+      "window": 18000,
+      "attacks": 39
+    },
+    {
+      "window": 18100,
+      "attacks": 36
+    },
+    {
+      "window": 18200,
+      "attacks": 46
+    },
+    {
+      "window": 18300,
+      "attacks": 44
+    },
+    {
+      "window": 18400,
+      "attacks": 34
+    },
+    {
+      "window": 18500,
+      "attacks": 41
+    },
+    {
+      "window": 18600,
+      "attacks": 33
+    },
+    {
+      "window": 18700,
+      "attacks": 46
+    },
+    {
+      "window": 18800,
+      "attacks": 43
+    },
+    {
+      "window": 18900,
+      "attacks": 39
+    },
+    {
+      "window": 19000,
+      "attacks": 48
+    },
+    {
+      "window": 19100,
+      "attacks": 43
+    },
+    {
+      "window": 19200,
+      "attacks": 44
+    },
+    {
+      "window": 19300,
+      "attacks": 46
+    },
+    {
+      "window": 19400,
+      "attacks": 46
+    },
+    {
+      "window": 19500,
+      "attacks": 42
+    },
+    {
+      "window": 19600,
+      "attacks": 43
+    },
+    {
+      "window": 19700,
+      "attacks": 38
+    },
+    {
+      "window": 19800,
+      "attacks": 46
+    },
+    {
+      "window": 19900,
+      "attacks": 43
+    },
+    {
+      "window": 20000,
+      "attacks": 46
+    },
+    {
+      "window": 20100,
+      "attacks": 40
+    },
+    {
+      "window": 20200,
+      "attacks": 38
+    },
+    {
+      "window": 20300,
+      "attacks": 42
+    },
+    {
+      "window": 20400,
+      "attacks": 45
+    },
+    {
+      "window": 20500,
+      "attacks": 45
+    },
+    {
+      "window": 20600,
+      "attacks": 47
+    },
+    {
+      "window": 20700,
+      "attacks": 52
+    },
+    {
+      "window": 20800,
+      "attacks": 37
+    },
+    {
+      "window": 20900,
+      "attacks": 50
+    },
+    {
+      "window": 21000,
+      "attacks": 42
+    },
+    {
+      "window": 21100,
+      "attacks": 46
+    },
+    {
+      "window": 21200,
+      "attacks": 37
+    },
+    {
+      "window": 21300,
+      "attacks": 39
+    },
+    {
+      "window": 21400,
+      "attacks": 41
+    },
+    {
+      "window": 21500,
+      "attacks": 44
+    },
+    {
+      "window": 21600,
+      "attacks": 50
+    },
+    {
+      "window": 21700,
+      "attacks": 46
+    },
+    {
+      "window": 21800,
+      "attacks": 44
+    },
+    {
+      "window": 21900,
+      "attacks": 51
+    },
+    {
+      "window": 22000,
+      "attacks": 46
+    },
+    {
+      "window": 22100,
+      "attacks": 43
+    },
+    {
+      "window": 22200,
+      "attacks": 43
+    },
+    {
+      "window": 22300,
+      "attacks": 46
+    },
+    {
+      "window": 22400,
+      "attacks": 41
+    },
+    {
+      "window": 22500,
+      "attacks": 21
+    }
+  ],
+  "timelineData": [
+    {
+      "index": 0,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 45,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 90,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 135,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 180,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 225,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 271,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 316,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 361,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 406,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 451,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 496,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 542,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 587,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 632,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 677,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 722,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 767,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 813,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 858,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 903,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 948,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 993,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1039,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 1084,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1129,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1174,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1219,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 1264,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 1310,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 1355,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1400,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 1445,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1490,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1535,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1581,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 1626,
+      "prediction": 2,
+      "true_label": 0
+    },
+    {
+      "index": 1671,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1716,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1761,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1807,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 1852,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 1897,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 1942,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 1987,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2032,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 2078,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2123,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2168,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2213,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2258,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2303,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 2349,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2394,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2439,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2484,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2529,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2575,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2620,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2665,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2710,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2755,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2800,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2846,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 2891,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 2936,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 2981,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3026,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3071,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3117,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3162,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 3207,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 3252,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 3297,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 3343,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 3388,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 3433,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3478,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3523,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 3568,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3614,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 3659,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 3704,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 3749,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 3794,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 3839,
+      "prediction": 0,
+      "true_label": 4
+    },
+    {
+      "index": 3885,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 3930,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 3975,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 4020,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4065,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 4111,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4156,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 4201,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 4246,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 4291,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 4336,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 4382,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 4427,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4472,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 4517,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4562,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4607,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 4653,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 4698,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 4743,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 4788,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 4833,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 4879,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 4924,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 4969,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5014,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5059,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 5104,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5150,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5195,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 5240,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5285,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 5330,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5375,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5421,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 5466,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5511,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5556,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5601,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5647,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5692,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5737,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 5782,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 5827,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5872,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 5918,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 5963,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 6008,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6053,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 6098,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 6143,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 6189,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 6234,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6279,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6324,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 6369,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6415,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6460,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 6505,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6550,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6595,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6640,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6686,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6731,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 6776,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 6821,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6866,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 6911,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 6957,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7002,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7047,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7092,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 7137,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7183,
+      "prediction": 2,
+      "true_label": 0
+    },
+    {
+      "index": 7228,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7273,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7318,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7363,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 7408,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7454,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 7499,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7544,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7589,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 7634,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 7679,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7725,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 7770,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 7815,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 7860,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 7905,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 7951,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 7996,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 8041,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 8086,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8131,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 8176,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 8222,
+      "prediction": 2,
+      "true_label": 0
+    },
+    {
+      "index": 8267,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8312,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 8357,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8402,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8447,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8493,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8538,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8583,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8628,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8673,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8719,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 8764,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8809,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8854,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 8899,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 8944,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 8990,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 9035,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9080,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9125,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 9170,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9215,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 9261,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9306,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9351,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9396,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 9441,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9487,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9532,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9577,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9622,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 9667,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 9712,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 9758,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9803,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 9848,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9893,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9938,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 9983,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10029,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10074,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10119,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 10164,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10209,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10255,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10300,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10345,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10390,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10435,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10480,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10526,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10571,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 10616,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 10661,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10706,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10751,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10797,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10842,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 10887,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 10932,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 10977,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11023,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11068,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11113,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11158,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11203,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 11248,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11294,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 11339,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11384,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 11429,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 11474,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11519,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11565,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11610,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11655,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11700,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11745,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 11791,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 11836,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 11881,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 11926,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 11971,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 12016,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 12062,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 12107,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 12152,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12197,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 12242,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 12287,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12333,
+      "prediction": 2,
+      "true_label": 0
+    },
+    {
+      "index": 12378,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 12423,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 12468,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12513,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 12559,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 12604,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 12649,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12694,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 12739,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12784,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12830,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 12875,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 12920,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 12965,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13010,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13055,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13101,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 13146,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13191,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 13236,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 13281,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13327,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13372,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13417,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13462,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13507,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13552,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 13598,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 13643,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13688,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13733,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13778,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 13823,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13869,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 13914,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 13959,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14004,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14049,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 14095,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14140,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 14185,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 14230,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 14275,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14320,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14366,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 14411,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14456,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14501,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14546,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 14591,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14637,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 14682,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 14727,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14772,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 14817,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14863,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14908,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 14953,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 14998,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15043,
+      "prediction": 3,
+      "true_label": 1
+    },
+    {
+      "index": 15088,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15134,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15179,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 15224,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 15269,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 15314,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 15359,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15405,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 15450,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15495,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15540,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15585,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15631,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15676,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15721,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15766,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15811,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15856,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 15902,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 15947,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 15992,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16037,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16082,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16127,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16173,
+      "prediction": 0,
+      "true_label": 2
+    },
+    {
+      "index": 16218,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16263,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16308,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16353,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16399,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16444,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16489,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16534,
+      "prediction": 0,
+      "true_label": 4
+    },
+    {
+      "index": 16579,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16624,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16670,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16715,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16760,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16805,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16850,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 16895,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 16941,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 16986,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17031,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17076,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17121,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17167,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 17212,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 17257,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17302,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 17347,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17392,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17438,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17483,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17528,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 17573,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17618,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17663,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17709,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 17754,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 17799,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17844,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17889,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 17935,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 17980,
+      "prediction": 1,
+      "true_label": 2
+    },
+    {
+      "index": 18025,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18070,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18115,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 18160,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 18206,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18251,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 18296,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18341,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18386,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 18431,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18477,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18522,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18567,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18612,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 18657,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 18703,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18748,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 18793,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 18838,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18883,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 18928,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 18974,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 19019,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19064,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 19109,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 19154,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 19199,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 19245,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19290,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19335,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 19380,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19425,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 19471,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19516,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19561,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19606,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 19651,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19696,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 19742,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 19787,
+      "prediction": 0,
+      "true_label": 2
+    },
+    {
+      "index": 19832,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19877,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 19922,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 19967,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20013,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 20058,
+      "prediction": 1,
+      "true_label": 2
+    },
+    {
+      "index": 20103,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20148,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20193,
+      "prediction": 2,
+      "true_label": 0
+    },
+    {
+      "index": 20239,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20284,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20329,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20374,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20419,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 20464,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20510,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20555,
+      "prediction": 0,
+      "true_label": 4
+    },
+    {
+      "index": 20600,
+      "prediction": 0,
+      "true_label": 1
+    },
+    {
+      "index": 20645,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20690,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20735,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20781,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20826,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 20871,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20916,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 20961,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21007,
+      "prediction": 1,
+      "true_label": 2
+    },
+    {
+      "index": 21052,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21097,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 21142,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 21187,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21232,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21278,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 21323,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21368,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21413,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21458,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21503,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21549,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21594,
+      "prediction": 3,
+      "true_label": 2
+    },
+    {
+      "index": 21639,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21684,
+      "prediction": 3,
+      "true_label": 3
+    },
+    {
+      "index": 21729,
+      "prediction": 2,
+      "true_label": 1
+    },
+    {
+      "index": 21775,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21820,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21865,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 21910,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 21955,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22000,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22046,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22091,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 22136,
+      "prediction": 0,
+      "true_label": 0
+    },
+    {
+      "index": 22181,
+      "prediction": 0,
+      "true_label": 3
+    },
+    {
+      "index": 22226,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22271,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 22317,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22362,
+      "prediction": 2,
+      "true_label": 2
+    },
+    {
+      "index": 22407,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22452,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22497,
+      "prediction": 1,
+      "true_label": 1
+    },
+    {
+      "index": 22543,
+      "prediction": 2,
+      "true_label": 2
+    }
+  ],
+  "temporalFeatures": [
+    {
+      "feature": "failed_login_rate_100",
+      "importance": 0.01511285503843125
+    },
+    {
+      "feature": "total_src_bytes_30",
+      "importance": 0.0124165645838324
+    },
+    {
+      "feature": "avg_duration_5",
+      "importance": 0.0114007896986003
+    },
+    {
+      "feature": "total_src_bytes_2",
+      "importance": 0.008400926227437888
+    },
+    {
+      "feature": "avg_duration_100",
+      "importance": 0.007042788528525112
+    },
+    {
+      "feature": "total_src_bytes_100",
+      "importance": 0.004724741974543312
+    },
+    {
+      "feature": "total_src_bytes_10",
+      "importance": 0.002605361007409779
+    },
+    {
+      "feature": "total_dst_bytes_2",
+      "importance": 0.0018028170878311878
+    },
+    {
+      "feature": "failed_login_rate_30",
+      "importance": 0.001294143065402098
+    },
+    {
+      "feature": "total_dst_bytes_10",
+      "importance": 0.0010271405770737817
+    }
+  ],
+  "attackSequences": [
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "HIGH",
+      "attack_types": "DoS, Probe",
+      "window_start": 0,
+      "window_end": 20,
+      "temporal_indicators": {
+        "burst_count": 16,
+        "traffic_spikes": 13
+      }
+    },
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "HIGH",
+      "attack_types": "DoS, Probe",
+      "window_start": 10,
+      "window_end": 30,
+      "temporal_indicators": {
+        "burst_count": 7,
+        "traffic_spikes": 9
+      }
+    },
+    {
+      "pattern": "Reconnaissance -> Exploitation (Kill Chain)",
+      "severity": "CRITICAL",
+      "attack_types": "DoS, Probe, R2L",
+      "window_start": 20,
+      "window_end": 40,
+      "temporal_indicators": {
+        "burst_count": 3,
+        "traffic_spikes": 8
+      }
+    },
+    {
+      "pattern": "Reconnaissance -> Exploitation (Kill Chain)",
+      "severity": "CRITICAL",
+      "attack_types": "DoS, Probe, R2L",
+      "window_start": 30,
+      "window_end": 50,
+      "temporal_indicators": {
+        "burst_count": 6,
+        "traffic_spikes": 8
+      }
+    },
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "MEDIUM",
+      "attack_types": "DoS, Probe",
+      "window_start": 50,
+      "window_end": 70,
+      "temporal_indicators": {
+        "burst_count": 4,
+        "traffic_spikes": 7
+      }
+    },
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "MEDIUM",
+      "attack_types": "DoS, Probe",
+      "window_start": 60,
+      "window_end": 80,
+      "temporal_indicators": {
+        "burst_count": 4,
+        "traffic_spikes": 6
+      }
+    },
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "MEDIUM",
+      "attack_types": "DoS, Probe",
+      "window_start": 70,
+      "window_end": 90,
+      "temporal_indicators": {
+        "burst_count": 5,
+        "traffic_spikes": 5
+      }
+    },
+    {
+      "pattern": "DoS + Other Attack (Distraction Tactic)",
+      "severity": "MEDIUM",
+      "attack_types": "DoS, Probe",
+      "window_start": 80,
+      "window_end": 100,
+      "temporal_indicators": {
+        "burst_count": 4,
+        "traffic_spikes": 6
+      }
+    },
+    {
+      "pattern": "Reconnaissance -> Exploitation (Kill Chain)",
+      "severity": "CRITICAL",
+      "attack_types": "DoS, Probe, R2L",
+      "window_start": 90,
+      "window_end": 110,
+      "temporal_indicators": {
+        "burst_count": 7,
+        "traffic_spikes": 8
+      }
+    },
+    {
+      "pattern": "Reconnaissance -> Exploitation (Kill Chain)",
+      "severity": "CRITICAL",
+      "attack_types": "DoS, Probe, R2L",
+      "window_start": 100,
+      "window_end": 120,
+      "temporal_indicators": {
+        "burst_count": 7,
+        "traffic_spikes": 8
+      }
+    }
+  ],
+  "mitreAttack": [
+    {
+      "ttp_id": "T1498.001",
+      "count": 5323
+    },
+    {
+      "ttp_id": "T1046",
+      "count": 2287
+    },
+    {
+      "ttp_id": "T1499.002",
+      "count": 767
+    },
+    {
+      "ttp_id": "T1071.001",
+      "count": 480
+    },
+    {
+      "ttp_id": "T1499.003",
+      "count": 236
+    },
+    {
+      "ttp_id": "T1110.001",
+      "count": 197
+    },
+    {
+      "ttp_id": "T1572",
+      "count": 110
+    },
+    {
+      "ttp_id": "T1499.004",
+      "count": 56
+    },
+    {
+      "ttp_id": "T1190",
+      "count": 11
+    },
+    {
+      "ttp_id": "T1068",
+      "count": 10
+    }
+  ],
+  "killChain": [
+    {
+      "stage": "Impact",
+      "count": 6382
+    },
+    {
+      "stage": "Reconnaissance",
+      "count": 2287
+    },
+    {
+      "stage": "Privilege Escalation",
+      "count": 124
+    },
+    {
+      "stage": "Credential Access",
+      "count": 197
+    },
+    {
+      "stage": "Lateral Movement",
+      "count": 484
+    },
+    {
+      "stage": "Initial Access",
+      "count": 12
+    },
+    {
+      "stage": "Persistence",
+      "count": 2
+    }
+  ]
+}

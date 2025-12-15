@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDS Multi-Stage Attack Detection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            color: #00d4ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            /* text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); */
+        }
+
+        .header p {
+            color: #aaa;
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-card h3 {
+            color: #00d4ff;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-card .label {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-container h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .attack-sequences {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .attack-sequences h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .sequence-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff4444;
+        }
+
+        .sequence-item.critical {
+            border-left-color: #ff0000;
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        .sequence-item.high {
+            border-left-color: #ff8800;
+            background: rgba(255, 136, 0, 0.1);
+        }
+
+        .sequence-item h4 {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .sequence-item p {
+            color: #bbb;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .badge.critical {
+            background: #ff0000;
+            color: white;
+        }
+
+        .badge.high {
+            background: #ff8800;
+            color: white;
+        }
+
+        .badge.medium {
+            background: #ffaa00;
+            color: white;
+        }
+
+        .timeline {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        .timeline h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .timeline-grid {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            white-space: pre;
+            color: #fff;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-symbol {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .controls h2 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .mitre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .mitre-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mitre-item .ttp-id {
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .mitre-item .count {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sequence-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        }
+
+        .sequence-meta {
+        margin-top: 8px;
+        display: grid;
+        gap: 6px;
+        }
+
+        .reason-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+        }
+
+        .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.78em;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e8e8e8;
+        }
+
+        .chip.critical { border-color: rgba(255, 0, 0, 0.65); }
+        .chip.high { border-color: rgba(255, 136, 0, 0.65); }
+        .chip.info { border-color: rgba(0, 212, 255, 0.35); }
+
+        .score-wrap {
+        min-width: 180px;
+        text-align: right;
+        }
+
+        .score-label {
+        font-size: 0.85em;
+        color: #bbb;
+        margin-bottom: 6px;
+        }
+
+        .score-bar {
+        width: 180px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.10);
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .score-fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        background: rgba(0, 212, 255, 0.85);
+        }
+
+        .details {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba(255,255,255,0.12);
+        }
+
+        details.sequence-details > summary {
+        cursor: pointer;
+        color: #00d4ff;
+        font-weight: 600;
+        margin-top: 10px;
+        }
+
+        details.sequence-details summary::-webkit-details-marker {
+        display: none;
+        }
+        /* Timeline click/highlight support */
+        .timeline-cell {
+            display: inline-block;
+            width: 0.9em;
+            text-align: center;
+            border-radius: 3px;
+            margin: 0 1px;
+            padding: 1px 0;
+        }
+
+        .timeline-cell.hl {
+            outline: 2px solid rgba(0, 212, 255, 0.9);
+            background: rgba(0, 212, 255, 0.18);
+        }
+
+        .timeline-row-label {
+            display: inline-block;
+            width: 70px;
+            color: #bbb;
+        }
+
+        /* Small "View on timeline" button */
+        .link-btn {
+            background: rgba(0, 212, 255, 0.12);
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            color: #00d4ff;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        .link-btn:hover {
+            background: rgba(0, 212, 255, 0.20);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Multi-Stage Attack Detection Dashboard</h1>
+        <p>NSL-KDD Intrusion Detection System with Temporal Analysis</p>
+    </div>
+
+    <!-- <div class="controls">
+        <h2>Simulation Controls</h2>
+        <button onclick="generateData()">🔄 Generate New Data</button>
+        <button onclick="startSimulation()">▶️ Start Live Simulation</button>
+        <button onclick="stopSimulation()">⏸️ Stop Simulation</button>
+        <button onclick="exportData()">💾 Export Results</button>
+    </div> -->
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Connections</h3>
+            <div class="value" id="totalConnections">12,543</div>
+            <div class="label">Analyzed</div>
+        </div>
+        <div class="stat-card">
+            <h3>Attacks Detected</h3>
+            <div class="value" id="attacksDetected">3,421</div>
+            <div class="label">27.3% Attack Rate</div>
+        </div>
+        <div class="stat-card">
+            <h3>Multi-Stage Attacks</h3>
+            <div class="value" id="multiStageAttacks">47</div>
+            <div class="label">Critical Sequences</div>
+        </div>
+        <div class="stat-card">
+            <h3>Model Accuracy</h3>
+            <div class="value" id="modelAccuracy">94.2%</div>
+            <div class="label">With Temporal Features</div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="chart-container">
+            <h2>Attack Category Distribution</h2>
+            <div class="chart-wrapper">
+                <canvas id="attackDistChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>Model Performance Comparison</h2>
+            <div class="chart-wrapper">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h2>MITRE ATT&CK Kill Chain Stages</h2>
+        <div class="chart-wrapper">
+            <canvas id="killChainChart"></canvas>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="chart-container">
+            <h2>Temporal Feature Importance</h2>
+            <div class="chart-wrapper">
+                <canvas id="featureImportanceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>Attack Detection Over Time</h2>
+            <div class="chart-wrapper">
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="attack-sequences">
+        <h2>Critical Multi-Stage Attack Sequences</h2>
+        <div id="sequenceContainer"></div>
+    </div>
+
+    <div class="chart-container">
+        <h2>Top MITRE ATT&CK Techniques Detected</h2>
+        <div class="mitre-grid" id="mitreGrid"></div>
+    </div>
+
+    <div class="timeline" id="timelineSection">
+        <div id="timelineFocus" style="color:#aaa; margin: -10px 0 10px 0; font-size: 0.9em;"></div>
+        <h2>Attack Timeline Visualization</h2>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-symbol" style="background: #2ecc71; color: #000;">.</div>
+                <span>Normal</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-symbol" style="background: #e74c3c; color: #fff;">D</div>
+                <span>DoS</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-symbol" style="background: #f39c12; color: #fff;">P</div>
+                <span>Probe</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-symbol" style="background: #9b59b6; color: #fff;">R</div>
+                <span>R2L</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-symbol" style="background: #e84393; color: #fff;">U</div>
+                <span>U2R</span>
+            </div>
+        </div>
+        <div class="timeline-grid" id="timelineGrid"></div>
+    </div>
+
+    <script>
+        // Global data storage
+        let dashboardData = null;
+        let simulationInterval = null;
+
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('dashboard_data.json');
+                if (!response.ok) {
+                    throw new Error('Dashboard data not found. Please run the Python analysis first.');
+                }
+                dashboardData = await response.json();
+                console.log('✓ Dashboard data loaded successfully!');
+                updateDashboard();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                alert('⚠️ Could not load dashboard_data.json\n\nPlease run your Python analysis script first to generate the data file.\n\nUsing sample data for now...');
+                generateSampleData();
+            }
+        }
+
+        function generateSampleData() {
+            // Fallback sample data if JSON not found
+            dashboardData = {
+                stats: {
+                    totalConnections: 12543,
+                    attacksDetected: 3421,
+                    multiStageAttacks: 47,
+                    modelAccuracy: 94.2
+                },
+                performance: {
+                    baseline: { accuracy: 87.5, precision: 85.2, recall: 86.8, f1score: 86.0 },
+                    temporal: { accuracy: 94.2, precision: 92.8, recall: 93.5, f1score: 93.1 }
+                },
+                attackDistribution: { Normal: 8000, DoS: 2500, Probe: 800, R2L: 600, U2R: 300 },
+                attackTimeline: Array.from({length: 50}, (_, i) => ({window: i*100, attacks: Math.floor(Math.random() * 30) + 10})),
+                temporalFeatures: [
+                    {feature: 'conn_count_10', importance: 0.0523},
+                    {feature: 'total_src_bytes_30', importance: 0.0412},
+                    {feature: 'conn_burst', importance: 0.0389}
+                ],
+                attackSequences: [
+                    {pattern: 'Reconnaissance → Exploitation', severity: 'critical', attack_types: 'Probe, R2L', window_start: 1250, window_end: 1270}
+                ],
+                mitreAttack: [
+                    {ttp_id: 'T1046', count: 850},
+                    {ttp_id: 'T1499.002', count: 1240}
+                ],
+                killChain: [
+                    {stage: 'Reconnaissance', count: 850},
+                    {stage: 'Impact', count: 2500}
+                ]
+            };
+            updateDashboard();
+        }
+
+        function updateDashboard() {
+            if (!dashboardData) return;
+            
+            // Update stats cards
+            document.getElementById('totalConnections').textContent = 
+                dashboardData.stats.totalConnections.toLocaleString();
+            document.getElementById('attacksDetected').textContent = 
+                dashboardData.stats.attacksDetected.toLocaleString();
+            document.getElementById('multiStageAttacks').textContent = 
+                dashboardData.stats.multiStageAttacks;
+            document.getElementById('modelAccuracy').textContent = 
+                dashboardData.stats.modelAccuracy.toFixed(1) + '%';
+
+            updateCharts();
+            updateSequences();
+            updateMitreGrid();
+            updateTimeline();
+        }
+
+        function generateData() {
+            // Reload data from file
+            loadData();
+        }
+
+        // Attack Distribution Chart
+        const attackDistCtx = document.getElementById('attackDistChart').getContext('2d');
+        let attackDistChart = new Chart(attackDistCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Normal', 'DoS', 'Probe', 'R2L', 'U2R'],
+                datasets: [{
+                    data: [8000, 2500, 800, 600, 300],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(243, 156, 18, 0.8)',
+                        'rgba(155, 89, 182, 0.8)',
+                        'rgba(232, 67, 147, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(243, 156, 18, 1)',
+                        'rgba(155, 89, 182, 1)',
+                        'rgba(232, 67, 147, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#e0e0e0', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Performance Comparison Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        let performanceChart = new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Accuracy', 'Precision', 'Recall', 'F1-Score'],
+                datasets: [{
+                    label: 'Baseline',
+                    data: [87.5, 85.2, 86.8, 86.0],
+                    backgroundColor: 'rgba(149, 165, 166, 0.6)',
+                    borderColor: 'rgba(149, 165, 166, 1)',
+                    borderWidth: 2
+                }, {
+                    label: 'With Temporal Features',
+                    data: [94.2, 92.8, 93.5, 93.1],
+                    backgroundColor: 'rgba(0, 212, 255, 0.6)',
+                    borderColor: 'rgba(0, 212, 255, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#e0e0e0', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Kill Chain Chart
+        const killChainCtx = document.getElementById('killChainChart').getContext('2d');
+        let killChainChart = new Chart(killChainCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Reconnaissance', 'Initial Access', 'Credential Access', 
+                         'Privilege Escalation', 'Persistence', 'Lateral Movement', 'Impact'],
+                datasets: [{
+                    label: 'Attack Count',
+                    data: [850, 420, 380, 290, 180, 120, 2500],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#e0e0e0', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Feature Importance Chart
+        const featureImportanceCtx = document.getElementById('featureImportanceChart').getContext('2d');
+        let featureImportanceChart = new Chart(featureImportanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['conn_count_10', 'total_src_bytes_30', 'conn_burst', 
+                         'avg_duration_10', 'traffic_spike', 'failed_login_rate_10'],
+                datasets: [{
+                    label: 'Importance Score',
+                    data: [0.0523, 0.0412, 0.0389, 0.0356, 0.0298, 0.0267],
+                    backgroundColor: 'rgba(52, 152, 219, 0.6)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#e0e0e0', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Timeline Chart
+        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+        let timelineChart = new Chart(timelineCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 50}, (_, i) => i * 100),
+                datasets: [{
+                    label: 'Attacks Detected',
+                    data: Array.from({length: 50}, () => Math.floor(Math.random() * 30) + 10),
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#e0e0e0' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#e0e0e0', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        function updateCharts() {
+            if (!dashboardData) return;
+
+            // Update attack distribution
+            const dist = dashboardData.attackDistribution;
+            attackDistChart.data.datasets[0].data = [
+                dist.Normal, dist.DoS, dist.Probe, dist.R2L, dist.U2R
+            ];
+            attackDistChart.update();
+
+            // Update performance comparison
+            const perf = dashboardData.performance;
+            performanceChart.data.datasets[0].data = [
+                perf.baseline.accuracy,
+                perf.baseline.precision,
+                perf.baseline.recall,
+                perf.baseline.f1score
+            ];
+            performanceChart.data.datasets[1].data = [
+                perf.temporal.accuracy,
+                perf.temporal.precision,
+                perf.temporal.recall,
+                perf.temporal.f1score
+            ];
+            performanceChart.update();
+
+            // Update kill chain
+            if (dashboardData.killChain) {
+                const stages = ['Reconnaissance', 'Initial Access', 'Credential Access', 
+                               'Privilege Escalation', 'Persistence', 'Lateral Movement', 'Impact'];
+                const stageMap = {};
+                dashboardData.killChain.forEach(s => stageMap[s.stage] = s.count);
+                killChainChart.data.datasets[0].data = stages.map(s => stageMap[s] || 0);
+                killChainChart.update();
+            }
+
+            // Update temporal features
+            if (dashboardData.temporalFeatures && dashboardData.temporalFeatures.length > 0) {
+                featureImportanceChart.data.labels = dashboardData.temporalFeatures.map(f => f.feature);
+                featureImportanceChart.data.datasets[0].data = dashboardData.temporalFeatures.map(f => f.importance);
+                featureImportanceChart.update();
+            }
+
+            // Update timeline
+            if (dashboardData.attackTimeline) {
+                timelineChart.data.labels = dashboardData.attackTimeline.map(t => t.window);
+                timelineChart.data.datasets[0].data = dashboardData.attackTimeline.map(t => t.attacks);
+                timelineChart.update();
+            }
+        }
+
+        function updateSequences() {
+            if (!dashboardData || !dashboardData.attackSequences) return;
+
+            const container = document.getElementById('sequenceContainer');
+            if (dashboardData.attackSequences.length === 0) {
+                container.innerHTML = '<p style="color: #aaa;">No multi-stage attack sequences detected.</p>';
+                return;
+            }
+
+            function normalizeAttackTypes(value) {
+                if (!value) return [];
+                if (Array.isArray(value)) return value.map(v => String(v).trim()).filter(Boolean);
+                return String(value).split(',').map(v => v.trim()).filter(Boolean);
+            }
+
+            function buildExplainability(seq) {
+                const attackTypes = normalizeAttackTypes(seq.attack_types);
+                const ind = seq.temporal_indicators || {};
+                const burst = Number(ind.burst_count ?? 0);
+                const spikes = Number(ind.traffic_spikes ?? 0);
+
+                const pattern = String(seq.pattern || '');
+                const hasDoS = attackTypes.includes('DoS');
+                const hasProbe = attackTypes.includes('Probe');
+                const hasR2L = attackTypes.includes('R2L');
+                const hasU2R = attackTypes.includes('U2R');
+
+                // Simple scoring (tune thresholds/weights to your taste)
+                let score = 0;
+                const reasons = [];
+
+                if (pattern.toLowerCase().includes('kill chain')) {
+                score += 55;
+                reasons.push({ text: 'Kill-chain progression detected', kind: 'critical' });
+                }
+                if (hasU2R) {
+                score += 35;
+                reasons.push({ text: 'Privilege escalation present (U2R)', kind: 'critical' });
+                }
+                if (hasR2L) {
+                score += 20;
+                reasons.push({ text: 'Exploitation / access present (R2L)', kind: 'high' });
+                }
+                if (hasDoS && attackTypes.length >= 2) {
+                score += 15;
+                reasons.push({ text: 'DoS used alongside other activity', kind: 'high' });
+                }
+                if (hasProbe && (hasR2L || hasU2R)) {
+                score += 10;
+                reasons.push({ text: 'Recon + exploit in same window', kind: 'high' });
+                }
+
+                // Temporal triggers
+                if (burst >= 8) {
+                score += 10;
+                reasons.push({ text: `Burst count high (${burst})`, kind: 'info' });
+                } else if (burst > 0) {
+                reasons.push({ text: `Burst count (${burst})`, kind: 'info' });
+                }
+
+                if (spikes >= 8) {
+                score += 10;
+                reasons.push({ text: `Traffic spikes high (${spikes})`, kind: 'info' });
+                } else if (spikes > 0) {
+                reasons.push({ text: `Traffic spikes (${spikes})`, kind: 'info' });
+                }
+
+                score = Math.max(0, Math.min(100, score));
+
+                // Optional: compute a derived severity if you want to display both
+                let derivedSeverity = 'MEDIUM';
+                if (score >= 70) derivedSeverity = 'CRITICAL';
+                else if (score >= 45) derivedSeverity = 'HIGH';
+
+                return { score, reasons, derivedSeverity };
+            }
+
+            container.innerHTML = dashboardData.attackSequences.map((seq, idx) => {
+                const severity = String(seq.severity || 'MEDIUM').toLowerCase();
+                const { score, reasons, derivedSeverity } = buildExplainability(seq);
+
+                const scoreWidth = `${score}%`;
+                const attackTypesText = Array.isArray(seq.attack_types) ? seq.attack_types.join(', ') : (seq.attack_types || '');
+
+                const chipsHtml = reasons.length
+                ? `<div class="reason-chips">
+                    ${reasons.map(r => `<span class="chip ${r.kind}">${r.text}</span>`).join('')}
+                    </div>`
+                : `<div class="reason-chips"><span class="chip info">No explainability signals available</span></div>`;
+
+                return `
+                <div class="sequence-item ${severity}">
+                    <div class="sequence-top">
+                    <div>
+                        <h4>Sequence #${idx + 1}: ${seq.pattern || 'Multi-stage activity'}</h4>
+                        <div class="sequence-meta">
+                        <p><strong>Attack Types:</strong> ${attackTypesText}</p>
+                        <p><strong>Detection window:</strong> #${seq.window_start} → #${seq.window_end}
+                            <span style="color:#aaa;">(${seq.window_end - seq.window_start} connections)</span>
+                        </p>
+                        <button class="link-btn" onclick="jumpToWindow(${seq.window_start}, ${seq.window_end})">
+                        View on timeline
+                        </button>
+                        <p><strong>Severity:</strong> ${String(seq.severity || '').toUpperCase()} (score-based: ${derivedSeverity})</p>
+                        </div>
+                    </div>
+
+                    <div class="score-wrap">
+                        <div class="score-label">Severity score: ${score}/100</div>
+                        <div class="score-bar"><div class="score-fill" style="width:${scoreWidth}"></div></div>
+                    </div>
+                    </div>
+
+                    ${chipsHtml}
+
+                    <details class="sequence-details">
+                    <summary>Details</summary>
+                    <div class="details">
+                        ${
+                        seq.temporal_indicators && Object.keys(seq.temporal_indicators).length > 0
+                            ? `<p><strong>Temporal Indicators:</strong> ${JSON.stringify(seq.temporal_indicators)}</p>`
+                            : `<p style="color:#aaa;">No temporal indicators available for this sequence.</p>`
+                        }
+                        
+                    </div>
+                    </details>
+
+                    <span class="badge ${severity}">${String(seq.severity || 'MEDIUM').toUpperCase()}</span>
+                </div>
+                `;
+            }).join('');
+            }
+
+
+        function updateMitreGrid() {
+            if (!dashboardData || !dashboardData.mitreAttack) return;
+
+            const grid = document.getElementById('mitreGrid');
+            if (dashboardData.mitreAttack.length === 0) {
+                grid.innerHTML = '<p style="color: #aaa;">No MITRE ATT&CK techniques detected.</p>';
+                return;
+            }
+
+            grid.innerHTML = dashboardData.mitreAttack.map(ttp => `
+                <div class="mitre-item">
+                    <div class="ttp-id">${ttp.ttp_id}</div>
+                    <div class="count">${ttp.count}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateTimeline() {
+            const grid = document.getElementById('timelineGrid');
+
+            if (!dashboardData || !dashboardData.timelineData || dashboardData.timelineData.length === 0) {
+                grid.textContent = "No timeline data available.";
+                return;
+            }
+
+            const symbols = {0: '.', 1: 'D', 2: 'P', 3: 'R', 4: 'U'};
+            let html = '';
+
+            const rowSize = 50;
+            const numRows = Math.min(10, Math.ceil(dashboardData.timelineData.length / rowSize));
+
+            for (let i = 0; i < numRows; i++) {
+                const start = i * rowSize;
+                const end = Math.min(start + rowSize, dashboardData.timelineData.length);
+
+                const rowStartIdx = dashboardData.timelineData[start].index;
+                html += `<span class="timeline-row-label">${String(rowStartIdx).padStart(4, ' ')}:</span> `;
+
+                for (let j = start; j < end; j++) {
+                    const pred = dashboardData.timelineData[j].prediction;
+                    const idx = dashboardData.timelineData[j].index;
+                    const sym = symbols[pred] ?? '.';
+                    html += `<span class="timeline-cell" data-idx="${idx}" title="Index ${idx}">${sym}</span>`;
+                }
+                html += `<br/>`;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function jumpToWindow(startIdx, endIdx) {
+            const section = document.getElementById('timelineSection');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            const focus = document.getElementById('timelineFocus');
+            if (focus) {
+                focus.textContent = `Focused window: #${startIdx} → #${endIdx} (${endIdx - startIdx} connections). Note: timeline is sampled.`;
+            }
+
+            document.querySelectorAll('.timeline-cell.hl').forEach(el => el.classList.remove('hl'));
+
+            const cells = Array.from(document.querySelectorAll('.timeline-cell'));
+            const highlighted = [];
+
+            for (const cell of cells) {
+                const idx = Number(cell.dataset.idx);
+                if (idx >= startIdx && idx < endIdx) {
+                cell.classList.add('hl');
+                highlighted.push(cell);
+                }
+            }
+
+            // If we hit some cells, scroll to the first one (center it)
+            if (highlighted.length > 0) {
+                setTimeout(() => {
+                highlighted[0].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                }, 250);
+                return;
+            }
+
+            // Otherwise: highlight nearest sampled point
+            if (cells.length > 0) {
+                let bestCell = cells[0];
+                let bestDist = Infinity;
+
+                for (const cell of cells) {
+                const idx = Number(cell.dataset.idx);
+                const dist = Math.min(Math.abs(idx - startIdx), Math.abs(idx - (endIdx - 1)));
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    bestCell = cell;
+                }
+                }
+
+                bestCell.classList.add('hl');
+
+                setTimeout(() => {
+                bestCell.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                }, 250);
+
+                if (focus) {
+                focus.textContent += ` (No exact match in sampled points; highlighting nearest index ${bestCell.dataset.idx}.)`;
+                }
+            }
+        }
+
+
+
+        function startSimulation() {
+            if (simulationInterval) return;
+            
+            simulationInterval = setInterval(() => {
+                // Simulate live data updates
+                const current = parseInt(document.getElementById('totalConnections').textContent.replace(',', ''));
+                document.getElementById('totalConnections').textContent = 
+                    (current + Math.floor(Math.random() * 50)).toLocaleString();
+                
+                const attacks = parseInt(document.getElementById('attacksDetected').textContent.replace(',', ''));
+                document.getElementById('attacksDetected').textContent = 
+                    (attacks + Math.floor(Math.random() * 15)).toLocaleString();
+                
+                // Update timeline chart
+                timelineChart.data.labels.shift();
+                timelineChart.data.labels.push(timelineChart.data.labels[timelineChart.data.labels.length - 1] + 100);
+                timelineChart.data.datasets[0].data.shift();
+                timelineChart.data.datasets[0].data.push(Math.floor(Math.random() * 30) + 10);
+                timelineChart.update('none');
+            }, 2000);
+        }
+
+        function stopSimulation() {
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+                simulationInterval = null;
+            }
+        }
+
+        function exportData() {
+            if (!dashboardData) {
+                alert('No data available to export!');
+                return;
+            }
+            
+            const exportData = {
+                ...dashboardData,
+                exportTimestamp: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ids-report-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize dashboard - load data on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 Dashboard initializing...');
+            loadData();
+        });
+    </script>
+</body>
+</html>
